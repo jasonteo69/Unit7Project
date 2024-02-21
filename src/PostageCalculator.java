@@ -20,13 +20,26 @@ public class PostageCalculator {
         return Math.round(costOfShipping * 100.0) / 100.0;
     }
     public double calculatePostage(Address address1, Address address2, double weight, double height, double length, double width) {
-        int countyCode1 = address1.getZipCode();
-        int countCode2 = address2.getZipCode();
-
-        return costOfShipping;
+        costOfShipping = baseCost;
+        int countyCode1 = address1.getZipCode() / 100;
+        int countyCode2 = address2.getZipCode() / 100;
+        double extraCharge = 0.0;
+        if (weight > 40) {
+            int count = 0;
+            extraCharge = weight - 40;
+            for (double i = extraCharge; i >= 0; i -= 0.1) {
+                count++;
+            }
+            for (int j = 0; j < count; j++) {
+                costOfShipping += 0.1;
+            }
+        }
+        double difference = (countyCode1 - countyCode2) / 100.00;
+        costOfShipping += difference;
+        return Math.round(costOfShipping * 100.0) / 100.0;
     }
     public double calculatePostage(Package pack) {
-
-        return costOfShipping;
+        double test = calculatePostage(pack.getDestination(), pack.getOrigin(), pack.getWeight(), pack.getHeight(), pack.getLength(), pack.getWidth());
+        return test;
     }
 }

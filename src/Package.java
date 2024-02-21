@@ -5,6 +5,7 @@ public class Package {
     private double height;
     private double length;
     private double width;
+    //Is this even right?
     public Package(Address origin, Address destination, double weight, double height, double length, double width) {
         this.origin = origin;
         this.destination = destination;
@@ -60,5 +61,17 @@ public class Package {
 
     public void setWidth(double width) {
         this.width = width;
+    }
+
+    @Override
+    public String toString() {
+        return "Package{" +
+                "origin=" + origin +
+                ", destination=" + destination +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", length=" + length +
+                ", width=" + width +
+                '}';
     }
 }

@@ -33,7 +33,12 @@ public class Main {
             PostageCalculator box = new PostageCalculator();
             System.out.println("Cost: " + box.calculatePostage(zipCode1, zipCode2, weight));
         } else if (choice.equals("2")) {
-
+            PackageSimulator simulation = new PackageSimulator();
+            System.out.print("How many packages would you like to simulate? ");
+            int numOfPackagesToBeGenerated = scanner.nextInt();
+            scanner.nextLine();
+            simulation.generatePackages(4);
+            System.out.println(simulation.getSimulationInfo());
         } else if (choice.equals("3")) {
 
         } else {

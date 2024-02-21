@@ -25,7 +25,7 @@ public class Address {
     public Address(String str) {
         String[] addressString = str.split(" ");
         houseNumber = addressString[0];
-
+        streetName = addressString[1];
     }
 
     public String getHouseNumber() {
