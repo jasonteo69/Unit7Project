@@ -25,7 +25,11 @@ public class Address {
     public Address(String str) {
         String[] addressString = str.split(" ");
         houseNumber = addressString[0];
-        streetName = addressString[1];
+        streetName = addressString[1] + " " + addressString[2];
+        apartmentNumber = addressString[3];
+        city = addressString[4];
+        state = addressString[5];
+        zipCode = Integer.parseInt(addressString[6]);
     }
 
     public String getHouseNumber() {
@@ -78,6 +82,13 @@ public class Address {
 
     @Override
     public String toString() {
-        return houseNumber + " " + streetName + " " + apartmentNumber + ", " + city + ", " + state + " " + zipCode;
+        String zip = String.valueOf(zipCode);
+        if (String.valueOf(zipCode).length() < 5) {
+            zip = "0" + zipCode;
+        }
+        if (String.valueOf(zipCode).length() < 4) {
+            zip = "00" + zipCode;
+        }
+        return houseNumber + " " + streetName + " " + apartmentNumber + ", " + city + ", " + state + " " + zip;
     }
 }
